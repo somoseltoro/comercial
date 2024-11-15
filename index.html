@@ -10,11 +10,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Fondo de la página */
+            background-color: #f4f4f4;
         }
 
         header {
-            background-color: #E57373; /* Rojo claro para el encabezado */
+            background-color: #FF6F61; /* Rojo claro y vivo */
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -27,20 +27,37 @@
 
         .tabs {
             display: flex;
-            background-color: #E57373; /* Fondo rojo claro para las pestañas */
+            background-color: #FF6F61; /* Rojo claro y vivo */
             padding: 10px;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
         }
 
         .tab {
             padding: 10px 20px;
             color: white;
             cursor: pointer;
-            background-color: #EF9A9A; /* Color más claro para las pestañas */
+            background-color: #FF8A80; /* Rojo más suave pero brillante */
             margin: 0 5px;
             border-radius: 5px;
             transition: background-color 0.3s;
+            position: relative;
+            animation: moveTab 2s ease-in-out infinite; /* Movimiento de las pestañas */
+        }
+
+        /* Movimiento de las pestañas de tipo "abarrotes" */
+        @keyframes moveTab {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(5px); /* Desplazamiento de la pestaña hacia la derecha */
+            }
+            100% {
+                transform: translateX(0);
+            }
         }
 
         .tab:hover {
@@ -57,7 +74,7 @@
         }
 
         .tab-content iframe {
-            width: 100%; /* Asegura que el iframe ocupe todo el ancho disponible */
+            width: 100%; 
             height: 500px;
             border: none;
         }
@@ -69,11 +86,38 @@
         .active-tab-button {
             background-color: #D32F2F; /* Rojo fuerte para el botón activo */
         }
+
+        /* Efecto de movimiento para el contenedor de las pestañas */
+        .tabs::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #FF6F61 0%, #FF8A80 100%);
+            opacity: 0.5;
+            z-index: -1;
+            animation: slideBackground 5s ease-in-out infinite;
+        }
+
+        /* Desplazamiento del fondo */
+        @keyframes slideBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
     </style>
 </head>
 <body>
     <header>
-        <img src="image_2023_07_13T19_10_37_295Z.png" alt="Logo Distribuidora El Toro">
+        <div style="display: inline-block; background-color: white; padding: 10px; border-radius: 8px;">
+            <img src="image_2023_07_13T19_10_37_295Z.png" alt="Logo Distribuidora El Toro" style="width: 150px; height: auto;">
+        </div>
         <h1>Informes Power BI - Distribuidora El Toro</h1>
     </header>
 
@@ -125,8 +169,51 @@
         <iframe title="Dash_Electrolit" src="https://app.powerbi.com/view?r=eyJrIjoiNTgxMzY2MjEtMzZlOC00OWI0LTk4OWEtNWVjMzAyMjJkOGQxIiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
     </div>
 
-    <!-- Agrega los demás informes de manera similar -->
-
+    <div class="tab-content" id="tab-7">
+        <h2>Informe Kelloggs</h2>
+        <iframe title="Dash_Kelloggs" src="https://app.powerbi.com/view?r=eyJrIjoiNjA4NDJhNTEtZTFjNi00OGViLThhZWYtZDkwZDg1N2UxMDJiIiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab-8">
+        <h2>Informe Mondelez</h2>
+        <iframe title="Dash_Mondelez" src="https://app.powerbi.com/view?r=eyJrIjoiMWJhOWQzMDktNjY0NS00Y2M1LWI1MmMtMzgzZGMxOTNkMzhhIiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab-9">
+        <h2>Informe P&G</h2>
+        <iframe title="Dash_P&G" src="https://app.powerbi.com/view?r=eyJrIjoiNTBiNzRkZGMtMGZiNy00MzE2LWE0ZWItMGMyZWM4MzhmOWNmIiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab-10">
+        <h2>Informe Unilever</h2>
+        <iframe title="Dash_Unilever" src="https://app.powerbi.com/view?r=eyJrIjoiNzZlYjRjMjEtN2ZlMC00MmM5LWI2MTktMTlmNWVkMzUxN2JjIiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab-11">
+        <h2>Informe Reckitt</h2>
+        <iframe title="Dash_RH_MJ" src="https://app.powerbi.com/view?r=eyJrIjoiN2Y1ZTA2M2YtOTlhZi00N2U0LWExZjgtNTE0NDI4ZDgzODhjIiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab-12">
+        <h2>Informe Peñafiel</h2>
+        <iframe title="Dash_Peñafiel" src="https://app.powerbi.com/view?r=eyJrIjoiNzcwMTk5YzQtZjUxYy00YWI0LWJkM2UtMWI4YTlmN2FmNTA0IiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab-13">
+        <h2>Informe Upfield</h2>
+        <iframe title="Dash_upfield" src="https://app.powerbi.com/view?r=eyJrIjoiMTg0MWM3YTMtZDgzOS00NDNmLWFhMTQtMzg3NzZiZTUyM2U2IiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab-14">
+        <h2>Informe Temporalidades</h2>
+        <iframe title="Dashboard Temporalidades" src="https://app.powerbi.com/view?r=eyJrIjoiZTYzZWFmYmYtMTQ2Ny00ZDY1LWFiZmYtNWJjYjFjNzhjN2U5IiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div>
+    
+    <div class="tab-content" id="tab-15">
+        <h2>Informe Agotados</h2>
+        <iframe title="Porcentaje Agotados - copia" src="https://app.powerbi.com/view?r=eyJrIjoiYWRkNDk5ZWItZTNiZC00ZGQ4LThmNjktNDEyZjg3ZjNhNWFjIiwidCI6ImFhODFiNGU2LTllMTMtNDUxNC1iNzkwLTY1YWUyNDZlZjExZiIsImMiOjR9"></iframe>
+    </div> 
+    
     <script>
         function showTab(tabNumber) {
             // Ocultar todas las pestañas
